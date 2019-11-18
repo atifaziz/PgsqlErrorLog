@@ -179,10 +179,10 @@ namespace Elmah.Pgsql
                     {
                         while (reader.Read())
                         {
-                            var id = reader.GetString(0);
+                            var id = reader.GetGuid(0);
                             var xml = reader.GetString(1);
                             var error = ErrorXml.DecodeString(xml);
-                            errorEntryList.Add(new ErrorLogEntry(this, id, error));
+                            errorEntryList.Add(new ErrorLogEntry(this, id.ToString(), error));
                         }
                     }
                 }
